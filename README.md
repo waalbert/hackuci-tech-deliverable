@@ -57,6 +57,24 @@ Finally, use `pip` to install the required libraries for the backend:
 pip install -r requirements.txt
 ```
 
+## Development
+
+To start development, launch the development servers on the front end and back end.
+
+### Starting the frontend development server
+
+```bash
+cd frontend
+npm run dev
+```
+
+### Starting the backend development server
+
+```bash
+cd api
+python3 src/main.py
+```
+
 ## Tasks
 
 Hack at UCI is currently working on setting up a message board so its members
