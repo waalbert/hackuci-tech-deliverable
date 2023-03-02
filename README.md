@@ -9,46 +9,51 @@ deliverable. Please follow the instructions below.
 
 ### Cloning
 
-Clone this repository to your local machine by running the below command:
+Clone this repository to your local machine by running the command below:
 
-```
+```bash
 git clone https://github.com/HackAtUCI/tech-deliverable.git
 ```
 
 If you are unfamiliar with `git`, we recommend that you become familiar
 with it as soon as possible!
 
-### Installing Necessary Libraries
+Once you've cloned this repository, you'll need to install some dependencies for the frontend client and the backend API.
 
-Once you've cloned this repository, change directories into the project's
-frontend directory by running `cd tech-deliverable/frontend` and then
-`npm ci` to install all the libraries needed for the frontend.
+### Frontend Setup
 
-The process for the backend is similar. Change directories into the `backend`
-folder of `tech-deliverable` and create a Python virtual enviroment:
+Install the dependencies in the frontend directory with `npm` or `yarn`:
 
-```
-python -m venv .venv
+```bash
+cd frontend
+npm ci
 ```
 
-Then, activate it. The command differs among operating systems, so run the
-appropriate one for your device!
+### Backend Setup
+
+For the Python dependencies, we recommend creating a virtual enviroment:
+
+```bash
+python3 -m venv .venv
+```
+
+To activate the environment, run the appropriate command for your operating system:
 
 #### Windows
 
-```
+```bat
 .\.venv\Scripts\activate
 ```
 
-#### MacOS/Unix
+#### macOS/Unix
 
-```
+```bash
 source .venv/bin/activate
 ```
 
-Finally, to install the required libraries for the backend, run:
+Finally, use `pip` to install the required libraries for the backend:
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
