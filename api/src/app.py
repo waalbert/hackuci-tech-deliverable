@@ -1,5 +1,8 @@
+from datetime import datetime
 from typing import Any
-from fastapi import FastAPI, Form
+
+from fastapi import FastAPI, Form, status
+from fastapi.responses import RedirectResponse
 
 from services.database import JSONDatabase
 
@@ -20,10 +23,18 @@ def on_shutdown() -> None:
     database.close()
 
 
-@app.post("/message")
-def post_message(name: str = Form(), message: str = Form()) -> None:
-    post = {"name": name, "message": message}
+@app.post("/quote")
+def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
+    """Process a user submitting a new quote."""
+    now = datetime.now().replace(microsecond=0)
+    post = {
+        "name": name,
+        "message": message,
+        "time": now.isoformat(),
+    }
     database["posts"].append(post)
+
+    return RedirectResponse("/", status.HTTP_303_SEE_OTHER)
 
 
 # Write the route to get all messages below

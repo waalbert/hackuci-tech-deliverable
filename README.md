@@ -77,26 +77,25 @@ python3 src/main.py
 
 ## Tasks
 
-Hack at UCI is currently working on setting up a message board so its members
-can communicate with one another. They need _your_ help to finish it!
+Hack at UCI is currently working on setting up a quote book so its members can
+post fun quotes made by one another. They need _your_ help to finish it!
 
-The application is relatively simple. The homepage displays all the messages
-that are currently stored in the "database". (This is in quotes because we only
-use a JSON file to store all the messages here, not an actual database!) Users
-have the option to create and submit their own messages, so naturally, when they
-submit a message, it should automatically appear on the home page after all the
-previous tweets.
+The application is relatively simple. The home page will provide an interface
+for users to submit quotes and display all of the existing quotes which are
+stored in the "database" (This is in quotes because we use a dictionary and a
+JSON file to simulate a database!) When a user submits a quote, it should
+automatically appear on the home page after all the previous quotes.
 
 The tech stack this application uses is React for the frontend with Vite used
-as the build tool and FastAPI (Python). We've provided you with some basic
-components for the homepage, but you'll need to complete the component(s) for
-displaying messages and styling for the entire frontend. The way you choose to
-style this application is completely up to you, so feel free to be as creative
-as you want! For the backend, we've provided you with a route that handles form
-submissions for creating a message, but you'll also need to create a new route
-that allows the frontend to retrieve messages from the backend.
+as the build tool and FastAPI (Python). We've provided some basic components
+for the homepage, but you'll need to design the component(s) for displaying
+quotes and styling for the entire frontend. The way you choose to style this
+application is completely up to you, so feel free to be as creative as you want!
+For the backend, we've provided a route which handles the form submission for
+creating a quote, but you'll also need to create a new API route which allows
+the frontend to retrieve quotes from the database.
 
-<strong>Side Note:</strong> Feel free to customize the development environment
+**Note:** Feel free to customize the development environment
 however you want (i.e. add formatters or linters to your liking). Just be sure
 to not modify any of the starter code that we've provided you!
 
