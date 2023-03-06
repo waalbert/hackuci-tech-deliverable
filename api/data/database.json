@@ -1,0 +1,20 @@
+{
+    "posts": [
+        {
+            "name": "Peter Anteater",
+            "message": "Zot Zot Zot!"
+        },
+        {
+            "name": "Jane Doe",
+            "message": "This message is very long. Will your application be able to handle this properly? Also, how are you doing? I hope you're doing well!"
+        },
+        {
+            "name": "Josh Smith",
+            "message": "Testing testing, is this thing on?"
+        },
+        {
+            "name": "test",
+            "message": "test"
+        }
+    ]
+}
