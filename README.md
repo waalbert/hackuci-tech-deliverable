@@ -59,7 +59,7 @@ pip install -r requirements.txt
 
 ## Development
 
-To start development, launch the development servers on the front end and back end.
+To start development, launch the development servers on the frontend and backend.
 
 ### Starting the frontend development server
 
@@ -95,6 +95,10 @@ style this application is completely up to you, so feel free to be as creative
 as you want! For the backend, we've provided you with a route that handles form
 submissions for creating a message, but you'll also need to create a new route
 that allows the frontend to retrieve messages from the backend.
+
+<strong>Side Note:</strong> Feel free to customize the development environment
+however you want (i.e. add formatters or linters to your liking). Just be sure
+to not modify any of the starter code that we've provided you!
 
 Once you feel as if your message board is complete, please create your own
 GitHub repository, push your changes to there, and provide the link to it in
