@@ -60,6 +60,8 @@ pip install -r requirements.txt
 ## Development
 
 To start development, launch the development servers on the frontend and backend.
+Both development servers also support hot reload, so the instances are refreshed
+whenever relevant files are modified.
 
 ### Starting the frontend development server
 
@@ -68,12 +70,24 @@ cd frontend
 npm run dev
 ```
 
+This will start Vite's development server, and the frontend should now be
+accessible at `http://localhost:5173`.
+
 ### Starting the backend development server
 
 ```bash
 cd api
 python3 src/main.py
 ```
+
+This will start a Uvicorn server to run the FastAPI app on port 8000.
+
+### Working between the frontend and backend servers
+
+Any requests sent to `/api/*` on the frontend will automatically be forwarded to
+the API with to the path prefix removed.
+For example, accessing `http://localhost:5173/api/hello` will be the same as
+accessing `http://localhost:8000/hello`.
 
 ## Tasks
 
@@ -95,9 +109,13 @@ For the backend, we've provided a route which handles the form submission for
 creating a quote, but you'll also need to create a new API route which allows
 the frontend to retrieve quotes from the database.
 
-**Note:** Feel free to customize the development environment
-however you want (i.e. add formatters or linters to your liking). Just be sure
-to not modify any of the starter code that we've provided you!
+Our [deliverable requirements](https://hackatuci.notion.site/2023-2024-Tech-Team-Deliverable-1b3332a2e729487ea9e77c3bc80d9faa)
+describe the full specifications of the deliverable along with additional notes
+and resources.
+
+**Note:** Feel free to customize the development environment however you want
+(i.e. add formatters or linters to your liking). Just be sure to not modify any
+of the starter code that we've provided for you (except for the web form)!
 
 Once you feel as if your message board is complete, please create your own
 GitHub repository, push your changes to there, and provide the link to it in
