@@ -8,6 +8,12 @@ log = getLogger(__name__)
 
 
 class JSONDatabase(dict[str, VT]):
+    """
+    A dictionary which operates together with a JSON file.
+    Data is initially loaded from a JSON file and can be saved back to the file.
+    You should not modify this class.
+    """
+
     def __init__(self, path: str):
         """Initialize the database with the file data at the given path."""
         super().__init__()

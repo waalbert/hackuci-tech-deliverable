@@ -25,7 +25,10 @@ def on_shutdown() -> None:
 
 @app.post("/quote")
 def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
-    """Process a user submitting a new quote."""
+    """
+    Process a user submitting a new quote.
+    You should not modify this function.
+    """
     now = datetime.now().replace(microsecond=0)
     post = {
         "name": name,
@@ -37,4 +40,4 @@ def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
     return RedirectResponse("/", status.HTTP_303_SEE_OTHER)
 
 
-# Write the route to get all messages below
+# TODO: add another API route with a query parameter to retrieve quotes based on max age
