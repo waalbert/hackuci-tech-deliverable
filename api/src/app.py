@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Any
 
 from fastapi import FastAPI, Form, status
@@ -41,3 +41,29 @@ def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
 
 
 # TODO: add another API route with a query parameter to retrieve quotes based on max age
+@app.get("/get-quotes")
+def get_quotes(age: str) -> dict:
+    """
+    Fetch all the quotes with a certain age.
+    i.e. past week, past month, past year, or all time.
+    """
+    if age == "all":
+        return database["posts"]
+    
+    quote_list = []
+    if age == "week":
+        for quote in database["posts"]:
+            if datetime.now() - datetime.strptime(quote["time"], "%Y-%m-%dT%H:%M:%S") == timedelta(weeks=0):
+                quote_list.append(quote)
+    
+    elif age == "month":
+        for quote in database["posts"]:
+            if datetime.now().strftime("%Y-%m") == quote["time"][:7]:
+                quote_list.append(quote)
+
+    elif age == "year":
+        for quote in database["posts"]:
+            if datetime.now().strftime("%Y") == quote["time"][:4]:
+                quote_list.append(quote)
+
+    return {"data": quote_list}
