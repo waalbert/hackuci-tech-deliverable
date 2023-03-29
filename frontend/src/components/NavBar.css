@@ -1,0 +1,23 @@
+.title-img {
+    width: 50px;
+    /* height: 1vh; */
+}
+
+.title {
+    /* text-align: center; */
+    /* margin-top: 150px; */
+    font-family: "Google Sans";
+    font-size: 35px;
+    /* display: inline; */
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-family: "Google Sans";
+        font-size: 5.25vw;
+    }
+
+    .title-img {
+        width: 7.5vw;
+    }
+}

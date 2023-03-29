@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Google Sans";
+    src: url(./google-sans/ProductSans-Regular.ttf);
+}
+
+.submit-input {
+    margin: 10px;
+}
+.submit-quote {
+    font-family: "Google Sans";
+    text-align: center;
+}
