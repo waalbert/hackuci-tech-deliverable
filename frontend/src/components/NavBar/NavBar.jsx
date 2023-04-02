@@ -1,5 +1,5 @@
 import "./NavBar.css";
-import logo from "../../quotebook.png";
+import logo from "../../../quotebook.png";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 
