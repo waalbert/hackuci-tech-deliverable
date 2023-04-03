@@ -3,6 +3,7 @@ from typing import Any
 
 from fastapi import FastAPI, Form, status
 from fastapi.responses import RedirectResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 from services.database import JSONDatabase
 
@@ -10,6 +11,18 @@ app = FastAPI()
 
 database: JSONDatabase[list[dict[str, Any]]] = JSONDatabase("data/database.json")
 
+origins = [
+    "http://127.0.0.1:5173",
+    "http://localhost:5173",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.on_event("startup")
 def on_startup() -> None:
@@ -48,7 +61,7 @@ def get_quotes(age: str) -> dict:
     i.e. past week, past month, past year, or all time.
     """
     if age == "all":
-        return database["posts"]
+        return {"data" : database["posts"]}
     
     quote_list = []
     if age == "week":

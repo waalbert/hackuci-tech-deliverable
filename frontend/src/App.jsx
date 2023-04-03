@@ -7,8 +7,26 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DisplayQuotes from "./components/DisplayQuotes/DisplayQuotes";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+const URL = "http://127.0.0.1:8000";
 
 function App() {
+  const [quoteList, setQuoteList] = useState([]);
+  // let quoteList = [];
+  useEffect(() => {
+    axios
+      .get(`${URL}/get-quotes?age=all`)
+      .then((response) => {
+        // console.log(response);
+        setQuoteList(response["data"]["data"]);
+        // console.log(quoteList);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div className="App">
       {/* DONE - TODO: include an icon for the quote book */}
@@ -51,7 +69,7 @@ function App() {
             </Button>
           </Col>
           <Col>
-            <DisplayQuotes />
+            <DisplayQuotes quotes={quoteList} />
           </Col>
         </Row>
       </Container>
