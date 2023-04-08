@@ -14,6 +14,8 @@ database: JSONDatabase[list[dict[str, Any]]] = JSONDatabase("data/database.json"
 origins = [
     "http://127.0.0.1:5173",
     "http://localhost:5173",
+    "http://127.0.0.1:5174",
+    "http://localhost:5174"
 ]
 
 app.add_middleware(
@@ -54,8 +56,8 @@ def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
 
 
 # TODO: add another API route with a query parameter to retrieve quotes based on max age
-@app.get("/get-quotes")
-def get_quotes(age: str) -> dict:
+@app.get("/")
+def get_quotes(age: str = "all") -> dict:
     """
     Fetch all the quotes with a certain age.
     i.e. past week, past month, past year, or all time.
@@ -66,7 +68,9 @@ def get_quotes(age: str) -> dict:
     quote_list = []
     if age == "week":
         for quote in database["posts"]:
-            if datetime.now() - datetime.strptime(quote["time"], "%Y-%m-%dT%H:%M:%S") == timedelta(weeks=0):
+            date1 = datetime.now()
+            date2 = datetime.strptime(quote["time"], "%Y-%m-%dT%H:%M:%S")
+            if date1.isocalendar()[1] == date2.isocalendar()[1] and date1.year == date2.year:
                 quote_list.append(quote)
     
     elif age == "month":
