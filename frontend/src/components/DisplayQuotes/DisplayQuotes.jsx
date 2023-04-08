@@ -10,13 +10,13 @@ import axios from "axios";
 
 const URL = "http://127.0.0.1:8000";
 
-function DisplayQuotes(props) {
+function DisplayQuotes({ setQuoteList, quotes }) {
   const [quoteNumber, setQuoteNumber] = useState(1);
   const [quoteAge, setQuoteAge] = useState("all");
-  const [quoteList, changeQuoteList] = useState([...props.quotes]);
+
   useEffect(() => {
     axios
-      .get(`${URL}/get-quotes?age=${quoteAge}`)
+      .get(`${URL}/?age=${quoteAge}`)
       .then((response) => {
         const quotes = response["data"]["data"];
         if (quotes.length == 0) {
@@ -24,7 +24,7 @@ function DisplayQuotes(props) {
         } else {
           setQuoteNumber(1);
         }
-        changeQuoteList(quotes);
+        setQuoteList(quotes);
       })
       .catch((error) => console.log(error));
   }, [quoteAge]);
@@ -89,7 +89,7 @@ function DisplayQuotes(props) {
               </Col>
             </Row>
           </Container>
-          {quoteList
+          {quotes
             .slice(0)
             .reverse()
             .slice(quoteNumber - 1, quoteNumber + 2)
@@ -109,13 +109,13 @@ function DisplayQuotes(props) {
       <Container fluid className="mb-2">
         <Row>
           <p className="text-center">
-            Displaying Quotes #{quoteNumber}-
+            Displaying Quotes #{quotes.length == 0 ? 0 : quoteNumber}-
             {quoteNumber == 0
               ? 0
-              : quoteNumber + 2 <= quoteList.length
+              : quoteNumber + 2 <= quotes.length
               ? quoteNumber + 2
-              : quoteList.length}{" "}
-            out of {quoteList.length}
+              : quotes.length}{" "}
+            out of {quotes.length}
           </p>
         </Row>
         <Row>
@@ -136,7 +136,7 @@ function DisplayQuotes(props) {
             <div className="d-grid">
               <Button
                 onClick={() => {
-                  if (quoteNumber <= quoteList.length - 3) {
+                  if (quoteNumber <= quotes.length - 3) {
                     setQuoteNumber(quoteNumber + 3);
                   }
                 }}
