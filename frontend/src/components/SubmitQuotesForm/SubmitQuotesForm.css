@@ -1,0 +1,10 @@
+.submit-quote-card {
+    width: 35vw;
+    align-self: flex-start;
+}
+
+@media (max-width: 992px) {
+    .submit-quote-card {
+        width: auto;
+    }
+}

@@ -1,12 +1,32 @@
+.App {
+    background-color: #ffd200;
+}
+
 @font-face {
     font-family: "Google Sans";
     src: url(./google-sans/ProductSans-Regular.ttf);
 }
 
-.submit-input {
-    margin: 10px;
+.rounded-corners {
+    border-radius: 25px;
+}
+
+.google-font {
+    font-family: "Google Sans";
+}
+
+.btn-color {
+    background-color: #0064a4;
 }
 .submit-quote {
-    font-family: "Google Sans";
-    text-align: center;
+    margin-top: 15vh;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 992px) {
+    .submit-quote {
+        margin-top: 0;
+        display: inline;
+    }
 }

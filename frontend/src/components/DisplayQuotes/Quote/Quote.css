@@ -1,3 +1,8 @@
+.quote-color {
+    background-color: #0064a4;
+    color: white;
+}
+
 .card-header {
     display: flex;
     justify-content: space-between;
